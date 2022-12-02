@@ -56,7 +56,7 @@ if __name__ == "__main__":
             )
             print(item.text, end='; ')
             item.click()
-            result = driver.find_title()
+            result = result and driver.find_title()
 
             # цикл для подменю, если оно есть
             subitems = driver.find_elements(By.CSS_SELECTOR, 'ul.docs > li')
@@ -67,7 +67,7 @@ if __name__ == "__main__":
                 )
                 print(subitem.text, end='; ')
                 subitem.click()
-                result = driver.find_title()
+                result = result and driver.find_title()
 
     except Exception as ex:
         result = False
