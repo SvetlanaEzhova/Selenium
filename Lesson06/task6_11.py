@@ -61,56 +61,53 @@ class driver_litecart(webdriver.Chrome):
         ''' Нажимаем "Создать нового пользователя", заполняем все требуемые поля и нажимаем "Создать" '''
 
         self.find_element(By.CSS_SELECTOR, 'div#box-account-login a[href*=create_account]').click()
-        WebDriverWait(driver=self, timeout=5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'button[name=create_account]'))
-        )
+        WebDriverWait(driver=self,
+                      timeout=5).until(EC.presence_of_element_located((By.NAME, 'create_account')))
 
-        self.find_element(By.CSS_SELECTOR, 'input[name=firstname]').send_keys(user.firstname)
-        self.find_element(By.CSS_SELECTOR, 'input[name=lastname]').send_keys(user.lastname)
-        self.find_element(By.CSS_SELECTOR, 'input[name=address1]').send_keys(user.address)
-        self.find_element(By.CSS_SELECTOR, 'input[name=postcode]').send_keys(user.postcode)
-        self.find_element(By.CSS_SELECTOR, 'input[name=city]').send_keys(user.city)
+        self.find_element(By.NAME, 'firstname').send_keys(user.firstname)
+        self.find_element(By.NAME, 'lastname').send_keys(user.lastname)
+        self.find_element(By.NAME, 'address1').send_keys(user.address)
+        self.find_element(By.NAME, 'postcode').send_keys(user.postcode)
+        self.find_element(By.NAME, 'city').send_keys(user.city)
 
-        self.find_element(By.CSS_SELECTOR, 'span.selection').click()
-        self.find_element(By.CSS_SELECTOR,
-                          'input.select2-search__field').send_keys(user.country + Keys.ENTER)
+        self.find_element(By.CLASS_NAME, 'selection').click()
+        self.find_element(By.CLASS_NAME,
+                          'select2-search__field').send_keys(user.country + Keys.ENTER)
 
         self.find_element(By.CSS_SELECTOR,
                           'select[name=zone_code]').send_keys(user.zone + Keys.ENTER)
 
-        self.find_element(By.CSS_SELECTOR, 'input[name=email]').send_keys(user.email)
-        self.find_element(By.CSS_SELECTOR, 'input[name=phone]').send_keys(user.phone)
+        self.find_element(By.NAME, 'email').send_keys(user.email)
+        self.find_element(By.NAME, 'phone').send_keys(user.phone)
 
-        self.find_element(By.CSS_SELECTOR, 'input[name=password]').send_keys(user.password)
-        self.find_element(By.CSS_SELECTOR,
-                          'input[name=confirmed_password]').send_keys(user.password)
+        self.find_element(By.NAME, 'password').send_keys(user.password)
+        self.find_element(By.NAME, 'confirmed_password').send_keys(user.password)
 
-        self.find_element(By.CSS_SELECTOR, 'button[name=create_account]').click()
-        WebDriverWait(driver=self, timeout=5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div#box-account'))
-        )
+        self.find_element(By.NAME, 'create_account').click()
+        WebDriverWait(driver=self,
+                      timeout=5).until(EC.presence_of_element_located((By.ID, 'box-account')))
 
     def login(self, user: User):
         ''' Нажимаем "Домой", заполняем email\пароль и нажимаем "Логин" '''
 
-        self.find_element(By.CSS_SELECTOR, 'div#logotype-wrapper').click()
+        self.find_element(By.ID, 'logotype-wrapper').click()
         WebDriverWait(driver=self, timeout=5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div#box-account-login'))
+            EC.presence_of_element_located((By.ID, 'box-account-login'))
         )
 
-        self.find_element(By.CSS_SELECTOR, 'input[name=email]').send_keys(user.email)
-        self.find_element(By.CSS_SELECTOR, 'input[name=password]').send_keys(user.password)
+        self.find_element(By.NAME, 'email').send_keys(user.email)
+        self.find_element(By.NAME, 'password').send_keys(user.password)
 
-        self.find_element(By.CSS_SELECTOR, 'button[name=login]').click()
-        WebDriverWait(driver=self, timeout=5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div#box-account'))
-        )
+        self.find_element(By.NAME, 'login').click()
+        WebDriverWait(driver=self,
+                      timeout=5).until(EC.presence_of_element_located((By.ID, 'box-account')))
 
     def logout(self):
         ''' Нажимаес "Logout" '''
+
         self.find_element(By.CSS_SELECTOR, 'div#box-account a[href*=logout]').click()
         WebDriverWait(driver=self, timeout=15).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div#box-account-login'))
+            EC.presence_of_element_located((By.ID, 'box-account-login'))
         )
 
 
