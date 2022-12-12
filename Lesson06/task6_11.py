@@ -114,13 +114,13 @@ class driver_litecart(webdriver.Chrome):
 if __name__ == "__main__":
 
     driver = driver_litecart()
-    driver.get(url="http://localhost/litecart/")
 
     # пользователь с с достаточно уникальным email (dd<ДатаЧасыМинутыСекунды>@mail.com)
     user = User(email='dd' + datetime.now().strftime('%d%H%M%S') + '@mail.com')
     result = True
 
     try:
+        driver.get(url="http://localhost/litecart/")
         driver.create_new_user(user)
         driver.logout()
         driver.login(user)
