@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
     driver = driver_litecart()
 
-    # пользователь с с достаточно уникальным email (dd<ДатаЧасыМинутыСекунды>@mail.com)
+    # пользователь с достаточно уникальным email (dd<ДатаЧасыМинутыСекунды>@mail.com)
     user = User(email='dd' + datetime.now().strftime('%d%H%M%S') + '@mail.com')
     result = True
 
