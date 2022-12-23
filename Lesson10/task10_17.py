@@ -19,7 +19,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class driver_litecart(webdriver.Chrome):
-    ''' класс с create\logout\login'''
+    ''' класс для всех действий в тесте на странице ../admin/ '''
 
     def login(self, user: str = 'admin', password: str = 'admin') -> None:
         ''' Логинится на указанный ресурс, если не смог, то упадет с TimeoutException '''
