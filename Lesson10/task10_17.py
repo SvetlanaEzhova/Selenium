@@ -86,17 +86,6 @@ if __name__ == "__main__":
                 result = False
                 pprint(logs)
 
-        # for link in links:
-        #     print('==', link)
-        #     f = 'a[href="' + link + '"]'
-        #     driver.find_element(By.CSS_SELECTOR, f).click()
-        #     item = WebDriverWait(driver=driver,
-        #                          timeout=10).until(EC.element_to_be_clickable((By.NAME, 'cancel')))
-        #     driver.find_element(By.NAME, 'cancel').click()
-        #     logs = driver.get_log('browser')
-        #     result = result and (len(logs) == 0)
-        #     print('browser log:', logs)
-
     except Exception as ex:
         result = False
         print(f"Exception: {type(ex).__name__}")
