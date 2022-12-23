@@ -12,7 +12,6 @@ from datetime import datetime
 from pprint import pprint
 
 from selenium import webdriver
-from selenium.webdriver.remote.webdriver import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
